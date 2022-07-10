@@ -8,3 +8,6 @@ export interface ShopInterface {
   lon: number;
   user_id: string | null;
 }
+
+export type GetListOfShopsResponse = ShopInterface[];
+export type GetOneShopResponse = ShopInterface;

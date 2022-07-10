@@ -6,3 +6,6 @@ export interface ProductInterface {
   description: string | null;
   shop_id: string;
 }
+
+export type GetListOfProductsResponse = ProductInterface[];
+export type GetOneProductResponse = ProductInterface;
