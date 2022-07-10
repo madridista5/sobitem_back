@@ -10,5 +10,5 @@ export default registerAs('database', () => ({
   database: process.env.DB_DATABASE,
   entities: ['dist/**/**.entity{.ts,.js}'],
   bigNumberStrings: false,
-  synchronize: true,
+  synchronize: true, // wyłączyć to na produkcji
 }));
