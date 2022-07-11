@@ -1,3 +1,5 @@
+import { User } from "../../user/user.entity";
+
 export interface ShopInterface {
   id: string;
   name: string;
@@ -6,7 +8,7 @@ export interface ShopInterface {
   address: string;
   lat: number;
   lon: number;
-  user_id: string | null;
+  user_id: User | null;
 }
 
 export type GetListOfShopsResponse = ShopInterface[];

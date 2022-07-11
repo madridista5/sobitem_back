@@ -1,7 +1,9 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { ShopRecord } from "../shop/shopRecord.entity";
 
 @Entity()
 export class User extends BaseEntity {
+
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -18,4 +20,7 @@ export class User extends BaseEntity {
     default: null,
   })
   currentTokenId: string | null;
+
+  @OneToOne(type => ShopRecord)
+  shopRecord: ShopRecord;
 }

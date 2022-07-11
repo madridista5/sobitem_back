@@ -6,6 +6,6 @@ import { NestExpressApplication } from "@nestjs/platform-express";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   (app as NestExpressApplication).use(cookieParser());
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

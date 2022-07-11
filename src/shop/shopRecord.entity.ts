@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ShopInterface } from "../types";
 import { ProductRecord } from "../product/productRecord.entity";
+import { User } from "../user/user.entity";
 
 @Entity()
 export class ShopRecord extends BaseEntity implements ShopInterface {
@@ -44,10 +45,7 @@ export class ShopRecord extends BaseEntity implements ShopInterface {
   })
   lon: number;
 
-  @Column({
-    length: 36,
-    default: null, // wyłączyć to później
-    nullable: true, // wyłączyć to później
-  })
-  user_id: string | null;
+  @OneToOne(type => User)
+  @JoinColumn()
+  user_id: User;
 }
