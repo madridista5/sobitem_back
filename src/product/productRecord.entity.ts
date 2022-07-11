@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { ProductInterface } from "../types";
 
 @Entity()
-export class ProductRecord implements ProductInterface {
+export class ProductRecord extends BaseEntity implements ProductInterface {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

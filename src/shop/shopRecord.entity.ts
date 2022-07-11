@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { ShopInterface } from "../types";
 
 @Entity()
-export class ShopRecord implements ShopInterface {
+export class ShopRecord extends BaseEntity implements ShopInterface {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
