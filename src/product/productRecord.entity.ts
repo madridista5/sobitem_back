@@ -32,8 +32,5 @@ export class ProductRecord extends BaseEntity implements ProductInterface {
   description: string | null;
 
   @ManyToOne(type => ShopRecord, entity => entity.id)
-  @Column({
-    length: 36,
-  })
-  shop_id: string;
+  shop_id: ShopRecord;
 }
