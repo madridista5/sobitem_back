@@ -1,8 +1,10 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ShopInterface } from "../types";
+import { ProductRecord } from "../product/productRecord.entity";
 
 @Entity()
 export class ShopRecord extends BaseEntity implements ShopInterface {
+  @OneToMany(type => ProductRecord, entity => entity.shop_id)
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
