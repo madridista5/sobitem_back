@@ -27,4 +27,8 @@ export class ProductService {
     // TODO: add shop_id
     await ProductRecord.insert(req);
   }
+
+  async listAllProductsFromSingleShop(id: string): Promise<GetListOfProductsResponse> {
+    return await ProductRecord.findBy( {	shop: {id}});
+  }
 }

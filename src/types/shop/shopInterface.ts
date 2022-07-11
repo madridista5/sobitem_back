@@ -1,5 +1,3 @@
-import { User } from "../../user/user.entity";
-
 export interface ShopInterface {
   id: string;
   name: string;
@@ -8,7 +6,19 @@ export interface ShopInterface {
   address: string;
   lat: number;
   lon: number;
-  user_id: User | null;
+  // user_id: User | null;
+}
+
+export interface SimpleShopEntity {
+  id: string,
+  lat: number,
+  lon: number,
+}
+
+export interface ShopEntity extends SimpleShopEntity{
+  name: string;
+  category: string;
+  url: string;
 }
 
 export type GetListOfShopsResponse = ShopInterface[];

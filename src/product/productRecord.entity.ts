@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ProductInterface } from "../types";
 import { ShopRecord } from "../shop/shopRecord.entity";
 
@@ -32,5 +32,6 @@ export class ProductRecord extends BaseEntity implements ProductInterface {
   description: string | null;
 
   @ManyToOne(type => ShopRecord, entity => entity.id)
-  shop_id: ShopRecord;
+  @JoinColumn()
+  shop: ShopRecord;
 }

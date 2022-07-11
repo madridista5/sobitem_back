@@ -5,7 +5,7 @@ import { User } from "../user/user.entity";
 
 @Entity()
 export class ShopRecord extends BaseEntity implements ShopInterface {
-  @OneToMany(type => ProductRecord, entity => entity.shop_id)
+  @OneToMany(type => ProductRecord, entity => entity.shop)
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
