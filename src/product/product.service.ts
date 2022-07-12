@@ -31,4 +31,11 @@ export class ProductService {
   async listAllProductsFromSingleShop(id: string): Promise<GetListOfProductsResponse> {
     return await ProductRecord.findBy( {	shop: {id}});
   }
+
+  async getProductsWithSearchName(productName: string): Promise<GetListOfProductsResponse> {
+    const relation = await ProductRecord.find({
+      relations: ['shop'],
+    });
+    return relation.filter(product => product.name === productName);
+  }
 }

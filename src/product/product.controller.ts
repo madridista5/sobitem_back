@@ -13,6 +13,16 @@ export class ProductController {
     return this.productService.getProducts();
   }
 
+  @Get('/allProducts')
+  listAllProductsWithNoSearch(): Promise<GetListOfProductsResponse> {
+    return this.productService.getProducts();
+  }
+
+  @Get('/allProducts/:productName')
+  listAllProductsWithSearchName(@Param('productName') productName: string): Promise<GetListOfProductsResponse> {
+    return this.productService.getProductsWithSearchName(productName);
+  }
+
   @Get('/allProductsFromSingleShop/:id')
   listAllProductsFromSingleShop(@Param('id') id: string): Promise<GetListOfProductsResponse> {
     return this.productService.listAllProductsFromSingleShop(id);
