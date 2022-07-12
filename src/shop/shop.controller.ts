@@ -8,12 +8,17 @@ export class ShopController {
   constructor(@Inject(ShopService) private shopService: ShopService) {
   }
 
-  @Get('/')
+  @Get('/allShops')
   listAllShops(): Promise<GetListOfShopsResponse> {
     return this.shopService.getShops();
   }
 
-  @Get('/:id')
+  @Get('/allShops/:productName')
+  listAllShopsWithTheProduct(@Param('productName') productName: string): Promise<GetListOfShopsResponse> {
+    return this.shopService.getShopsWithTheProduct(productName);
+  }
+
+  @Get('/oneShop/:id')
   listOneShop(@Param('id') id: string): Promise<GetOneShopResponse> {
     return this.shopService.getOneShop(id);
   }

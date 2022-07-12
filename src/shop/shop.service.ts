@@ -2,11 +2,14 @@ import { forwardRef, Inject, Injectable } from "@nestjs/common";
 import { ProductService } from "../product/product.service";
 import { ShopRecord } from "./shopRecord.entity";
 import { GetListOfShopsResponse, GetOneShopResponse } from "../types";
+import { DataSource } from "typeorm";
+import { ProductRecord } from "../product/productRecord.entity";
 
 @Injectable()
 export class ShopService {
   constructor(
     @Inject(forwardRef(() => ProductService)) private productService: ProductService,
+    @Inject(DataSource) private dataSource: DataSource,
   ) {}
 
   async getShops(): Promise<GetListOfShopsResponse> {
@@ -26,4 +29,14 @@ export class ShopService {
   //   console.log(req);
   //   await this.shopRecordRepository.insert(req);
   // }
+
+
+  async getShopsWithTheProduct(productName: string): Promise<GetListOfShopsResponse> {
+    const relation = await ProductRecord.find({
+      relations: ['shop'],
+    });
+    return  relation
+      .filter(product => product.name === productName)
+      .map(shop => shop.shop);
+  }
 }
