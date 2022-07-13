@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { AddProductBasketDto } from "./dto/add-product-basket.dto";
+import { User } from "../user/user.entity";
 
 @Entity()
 export class ProductInBasket extends BaseEntity implements AddProductBasketDto {
@@ -27,4 +28,9 @@ export class ProductInBasket extends BaseEntity implements AddProductBasketDto {
     length: 36,
   })
   productId: string;
+
+  // 16
+  @ManyToOne(type => User, entity => entity.itemsInBasket)
+  @JoinColumn()
+  user: User;
 }

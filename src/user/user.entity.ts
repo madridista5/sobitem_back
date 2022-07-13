@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ShopRecord } from "../shop/shopRecord.entity";
+import { ProductInBasket } from "../basket/product-in-basket.entity";
 
 @Entity()
 export class User extends BaseEntity {
@@ -23,4 +24,7 @@ export class User extends BaseEntity {
 
   @OneToOne(type => ShopRecord)
   shopRecord: ShopRecord;
+
+  @OneToMany(type => ProductInBasket, entity => entity.user)
+  itemsInBasket: ProductInBasket[];
 }

@@ -12,6 +12,14 @@ export class UserService {
   }
 
   async register(newUser: RegisterDto): Promise<RegisterUserResponse> {
+    // 16 - sprawdzenie czy istnieje już użtykownik z takim emailem:
+    const users = await this.getAllUsers();
+    const checkEmail = users.some(user => user.email === newUser.email);
+    if(checkEmail) {
+      // obslużyć błąd - taki email już istnieje
+      return;
+    }
+
     const user = new User();
     user.email = newUser.email;
     user.pwdHash = hashPwd(newUser.pwd);
@@ -22,5 +30,10 @@ export class UserService {
 
   async getOneUser(id: string): Promise<User> {
     return await User.findOneOrFail({where: {id}});
+  }
+
+  // 16
+  async getAllUsers(): Promise<User[]> {
+    return await User.find();
   }
 }

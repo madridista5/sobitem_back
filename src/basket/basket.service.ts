@@ -1,7 +1,7 @@
 import { forwardRef, Inject, Injectable } from "@nestjs/common";
 import { AddProductBasketDto } from "./dto/add-product-basket.dto";
 import { ProductService } from "../product/product.service";
-import { ListProductsInBasketResponse } from "../types";
+import { GetTotalPriceResponse, ListProductsInBasketResponse } from "../types";
 import { ProductInBasket } from "./product-in-basket.entity";
 
 @Injectable()
@@ -35,10 +35,14 @@ export class BasketService {
     return await ProductInBasket.find();
   }
 
-  async getTotalPriceOfBasket(): Promise<number> {
-    return (await this.listProductsInBasket())
-      .map(el => el.price)
-      .reduce((prev, curr) => prev + curr, 0);
+  async getTotalPriceOfBasket(): Promise<GetTotalPriceResponse> {
+    const sum =  (await this.listProductsInBasket())
+      .map(el => Number(el.price))
+      .reduce((prev, curr) => prev + curr, 0)
+      .toFixed(2);
+    return {
+      sum,
+    };
   }
 
   async buyNowAndClearBasket(): Promise<void> {

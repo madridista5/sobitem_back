@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Inject, Param, Post } from "@nestjs/common";
 import { AddProductBasketDto } from "./dto/add-product-basket.dto";
 import { BasketService } from "./basket.service";
-import { ListProductsInBasketResponse } from "../types";
+import { GetTotalPriceResponse, ListProductsInBasketResponse } from "../types";
 
 @Controller('api/basket')
 export class BasketController {
@@ -25,7 +25,7 @@ export class BasketController {
   }
 
   @Get('/total-price')
-  getTotalPriceOfBasket(): Promise<number> {
+  getTotalPriceOfBasket(): Promise<GetTotalPriceResponse> {
     return this.basketService.getTotalPriceOfBasket();
   }
 
