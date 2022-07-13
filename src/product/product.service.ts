@@ -7,8 +7,9 @@ import { AddProductDto } from "./dto/add-product.dto";
 @Injectable()
 export class ProductService {
   constructor(
-    @Inject(forwardRef(() => ShopService)) private shopService: ShopService,
-  ) {
+    @Inject(
+      forwardRef(() => ShopService)) private shopService: ShopService,
+    ) {
   }
 
   async getProducts(): Promise<GetListOfProductsResponse> {
@@ -16,7 +17,7 @@ export class ProductService {
   }
 
   async getOneProduct(id: string): Promise<GetOneProductResponse> {
-    return await ProductRecord.findOneOrFail({where: {id}});
+    return await ProductRecord.findOneOrFail({ where: { id } });
   }
 
   async removeProduct(id: string): Promise<void> {
@@ -29,13 +30,19 @@ export class ProductService {
   }
 
   async listAllProductsFromSingleShop(id: string): Promise<GetListOfProductsResponse> {
-    return await ProductRecord.findBy( {	shop: {id}});
+    return await ProductRecord.findBy({ shop: { id } });
   }
 
   async getProductsWithSearchName(productName: string): Promise<GetListOfProductsResponse> {
     const relation = await ProductRecord.find({
-      relations: ['shop'],
+      relations: ["shop"]
     });
     return relation.filter(product => product.name === productName);
   }
+
+  // methods for basket (38:54 dzień 15)
+  async hadProduct(id: string): Promise<boolean> {
+    return (await this.getProducts()).some(product => product.id === id);
+  }
+
 }
