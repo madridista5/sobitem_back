@@ -4,4 +4,5 @@ export class AddProductDto {
   count: number;
   description?: string;
   // shop: ShopRecord;
+  shopId: string;
 }

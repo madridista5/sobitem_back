@@ -24,7 +24,7 @@ export class ProductService {
     await ProductRecord.delete(id);
   }
 
-  async addProduct(req: AddProductDto): Promise<void> {
+  async addProduct(req: AddProductDto, shopId: string): Promise<void> {
     // TODO: add shop_id
     await ProductRecord.insert(req);
   }

@@ -38,8 +38,11 @@ export class ProductController {
     return this.productService.removeProduct(id);
   }
 
-  @Post('/add')
-  addProduct(@Body() req: AddProductDto): Promise<void> {
-    return this.productService.addProduct(req);
+  @Post('/add/:shopId')
+  addProduct(
+    @Body() req: AddProductDto,
+    @Param('shopId') shopId: string,
+    ): Promise<void> {
+    return this.productService.addProduct(req, shopId);
   }
 }

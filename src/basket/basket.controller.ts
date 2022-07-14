@@ -1,7 +1,10 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Inject, Param, Post, UseGuards } from "@nestjs/common";
 import { AddProductBasketDto } from "./dto/add-product-basket.dto";
 import { BasketService } from "./basket.service";
 import { GetTotalPriceResponse, ListProductsInBasketResponse } from "../types";
+import { AuthGuard } from "@nestjs/passport";
+import { UserObj } from "../decorators/userobj.decorator";
+import { User } from "../user/user.entity";
 
 @Controller('api/basket')
 export class BasketController {
@@ -10,7 +13,12 @@ export class BasketController {
   }
 
   @Post('/')
-  addProductToBasket(@Body() item: AddProductBasketDto) {
+  // @UseGuards(AuthGuard('jwt'))
+  addProductToBasket(
+    @Body() item: AddProductBasketDto,
+    @UserObj() user: User,
+    ) {
+    console.log({user});
     return this.basketService.addProductToBasket(item);
   }
 

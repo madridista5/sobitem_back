@@ -4,6 +4,7 @@ import { ShopRecord } from "./shopRecord.entity";
 import { GetListOfShopsResponse, GetOneShopResponse } from "../types";
 import { DataSource } from "typeorm";
 import { ProductRecord } from "../product/productRecord.entity";
+import { AddShopDto } from "./dto/add-shop.dto";
 
 @Injectable()
 export class ShopService {
@@ -24,11 +25,16 @@ export class ShopService {
     await ShopRecord.delete(id);
   }
 
-  // TODO install map and use method which can do: address => lat, lon
-  // async addShop(req: AddShopDto): Promise<void> {
-  //   console.log(req);
-  //   await this.shopRecordRepository.insert(req);
-  // }
+  async addShop(req: AddShopDto): Promise<void> {
+    const newShop = new ShopRecord();
+    newShop.name = req.name;
+    newShop.category = req.category;
+    newShop.url = req.url;
+    newShop.address = req.address;
+    newShop.lon = req.lon;
+    newShop.lat = req.lat;
+    await newShop.save();
+  }
 
 
   async getShopsWithTheProduct(productName: string): Promise<GetListOfShopsResponse> {
