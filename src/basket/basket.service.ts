@@ -3,6 +3,7 @@ import { AddProductBasketDto } from "./dto/add-product-basket.dto";
 import { ProductService } from "../product/product.service";
 import { GetTotalPriceResponse, ListProductsInBasketResponse } from "../types";
 import { ProductInBasket } from "./product-in-basket.entity";
+import { ProductRecord } from "../product/productRecord.entity";
 
 @Injectable()
 export class BasketService {
@@ -14,9 +15,12 @@ export class BasketService {
     const {name, price, count, productId} = item;
 
     // uaktualnienie produktu - zmniejszenie count o 1
-    // const productItem = await this.productService.getOneProduct(productId);
-    // productItem.count--;
-    // await this.productService.updateOne(productItem.id, productItem.count);
+    const productToDecreaseCount = await ProductRecord.find({where: {id: productId}});
+    // if(productToDecreaseCount[0].count <= 0) {
+    //   throw new Error('You cannot add product to basket.');
+    // }
+    productToDecreaseCount[0].count--;
+    await productToDecreaseCount[0].save();
 
     const newItem = new ProductInBasket();
     newItem.name = name;

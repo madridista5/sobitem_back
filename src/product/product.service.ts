@@ -3,6 +3,7 @@ import { ShopService } from "../shop/shop.service";
 import { ProductRecord } from "./productRecord.entity";
 import { GetListOfProductsResponse, GetOneProductResponse } from "../types";
 import { AddProductDto } from "./dto/add-product.dto";
+import { ShopRecord } from "../shop/shopRecord.entity";
 
 @Injectable()
 export class ProductService {
@@ -25,8 +26,15 @@ export class ProductService {
   }
 
   async addProduct(req: AddProductDto, shopId: string): Promise<void> {
-    // TODO: add shop_id
-    await ProductRecord.insert(req);
+    const {name, price, count, description} = req;
+    const newShop = await ShopRecord.find({where: {id: shopId}});
+    const newProduct = new ProductRecord();
+    newProduct.name = name;
+    newProduct.price = price;
+    newProduct.count = count;
+    newProduct.description = description;
+    newProduct.shop = newShop[0];
+    await newProduct.save();
   }
 
   async listAllProductsFromSingleShop(id: string): Promise<GetListOfProductsResponse> {
