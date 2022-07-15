@@ -4,6 +4,7 @@ import { ProductService } from "../product/product.service";
 import { GetTotalPriceResponse, ListProductsInBasketResponse } from "../types";
 import { ProductInBasket } from "./product-in-basket.entity";
 import { ProductRecord } from "../product/productRecord.entity";
+import { User } from "../user/user.entity";
 
 @Injectable()
 export class BasketService {
@@ -25,6 +26,10 @@ export class BasketService {
     newItem.count = 1;
     newItem.productId = productId;
     await newItem.save();
+
+    //test - zapisywanie przedmiotu do konkretnego użtkownika
+    // newItem.user = user;
+    // await newItem.save();
   }
 
 

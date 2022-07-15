@@ -16,9 +16,9 @@ export class BasketController {
   // @UseGuards(AuthGuard('jwt'))
   addProductToBasket(
     @Body() item: AddProductBasketDto,
-    @UserObj() user: User,
+    // @UserObj() user: User,
     ) {
-    console.log({user});
+    // console.log({user});
     return this.basketService.addProductToBasket(item);
   }
 
