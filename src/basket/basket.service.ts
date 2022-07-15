@@ -32,6 +32,13 @@ export class BasketService {
 
 
   async deleteItemFromBasket(id: string): Promise<void> {
+    // uaktualnienie produtku - zwiększenie count o 1
+    const productToDeleteFromBasket = await ProductInBasket.find({where: { id }});
+    const productId = productToDeleteFromBasket[0].productId;
+    const productToIncreaseCount = await ProductRecord.find({where: {id: productId}});
+    productToIncreaseCount[0].count++;
+    await productToIncreaseCount[0].save();
+
     await ProductInBasket.delete(id);
   }
 
