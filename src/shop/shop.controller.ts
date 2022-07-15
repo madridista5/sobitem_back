@@ -1,6 +1,7 @@
-import { Controller, Delete, Get, Inject, Param } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Inject, Param, Post } from "@nestjs/common";
 import { ShopService } from "./shop.service";
 import { GetListOfShopsResponse, GetOneShopResponse } from "../types";
+import { AddShopDto } from "./dto/add-shop.dto";
 
 @Controller('api/shop')
 export class ShopController {
@@ -28,8 +29,9 @@ export class ShopController {
     return this.shopService.removeShop(id);
   }
 
-  // @Post('/add')
-  // addShop(@Body() req: AddShopDto): Promise<void> {
-  //   return this.shopService.addShop(req);
-  // }
+  @Post('/add')
+  addShop(@Body() req: AddShopDto): Promise<void> {
+    console.log(req);
+    return this.shopService.addShop(req);
+  }
 }

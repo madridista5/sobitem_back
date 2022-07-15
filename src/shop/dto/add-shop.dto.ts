@@ -4,4 +4,6 @@ export class AddShopDto {
   url?: string;
   address: string;
   user_id?: string;
+  lat: number;
+  lon: number;
 }

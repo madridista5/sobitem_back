@@ -8,6 +8,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { BasketModule } from './basket/basket.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
     ProductModule,
     UserModule,
     AuthModule,
+    BasketModule,
   ],
   controllers: [AppController],
   providers: [AppService],
