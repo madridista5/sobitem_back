@@ -16,9 +16,6 @@ export class BasketService {
 
     // uaktualnienie produktu - zmniejszenie count o 1
     const productToDecreaseCount = await ProductRecord.find({where: {id: productId}});
-    // if(productToDecreaseCount[0].count <= 0) {
-    //   throw new Error('You cannot add product to basket.');
-    // }
     productToDecreaseCount[0].count--;
     await productToDecreaseCount[0].save();
 

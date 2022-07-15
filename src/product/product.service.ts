@@ -4,6 +4,7 @@ import { ProductRecord } from "./productRecord.entity";
 import { GetListOfProductsResponse, GetOneProductResponse } from "../types";
 import { AddProductDto } from "./dto/add-product.dto";
 import { ShopRecord } from "../shop/shopRecord.entity";
+import { MoreThan } from "typeorm";
 
 @Injectable()
 export class ProductService {
@@ -14,7 +15,7 @@ export class ProductService {
   }
 
   async getProducts(): Promise<GetListOfProductsResponse> {
-    return await ProductRecord.find();
+    return await ProductRecord.find({where: {count: MoreThan(0)}});
   }
 
   async getOneProduct(id: string): Promise<GetOneProductResponse> {
@@ -48,7 +49,7 @@ export class ProductService {
     return relation.filter(product => product.name === productName);
   }
 
-  // methods for basket (38:54 dzień 15)
+  // methods for basket (38:54 d 15)
   async hadProduct(id: string): Promise<boolean> {
     return (await this.getProducts()).some(product => product.id === id);
   }
