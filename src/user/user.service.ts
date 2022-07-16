@@ -12,12 +12,11 @@ export class UserService {
   }
 
   async register(newUser: RegisterDto): Promise<RegisterUserResponse> {
-    // 16 - sprawdzenie czy istnieje już użtykownik z takim emailem:
     const users = await this.getAllUsers();
     const checkEmail = users.some(user => user.email === newUser.email);
     if(checkEmail) {
       // obslużyć błąd - taki email już istnieje
-      return;
+      return {id: '', email: ''};
     }
 
     const user = new User();
