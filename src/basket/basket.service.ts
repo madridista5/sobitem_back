@@ -5,11 +5,16 @@ import { GetTotalPriceResponse, ListProductsInBasketResponse } from "../types";
 import { ProductInBasket } from "./product-in-basket.entity";
 import { ProductRecord } from "../product/productRecord.entity";
 import { User } from "../user/user.entity";
+import { DataSource } from "typeorm";
+import { from } from "rxjs";
 
 @Injectable()
 export class BasketService {
 
-  constructor(@Inject(forwardRef(() => ProductService)) private productService: ProductService) {
+  constructor(
+    @Inject(forwardRef(() => ProductService)) private productService: ProductService,
+    @Inject(DataSource) private dataSource: DataSource,
+    ) {
   }
 
   async addProductToBasket(item: AddProductBasketDto, user: User): Promise<void> {
@@ -45,8 +50,7 @@ export class BasketService {
     const relation = await User.find({
       relations: ["itemsInBasket"],
     });
-    console.log(relation);
-    const currentUser: User = relation.filter(currentUser => currentUser.id = user.id)[0];
+    const currentUser: User = relation.filter(currentUser => currentUser.id === user.id)[0];
 
     return currentUser.itemsInBasket;
   }
@@ -61,7 +65,12 @@ export class BasketService {
     };
   }
 
-  async buyNowAndClearBasket(): Promise<void> {
-    await ProductInBasket.delete({});
+  async buyNowAndClearBasket(user: User): Promise<void> {
+    await this.dataSource
+      .createQueryBuilder()
+      .delete()
+      .from(ProductInBasket)
+      .where('userId = :id', {id: user.id})
+      .execute();
   }
 }

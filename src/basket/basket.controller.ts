@@ -45,7 +45,10 @@ export class BasketController {
   }
 
   @Get("/clear-basket")
-  buyNowAndClearBasket(): Promise<void> {
-    return this.basketService.buyNowAndClearBasket();
+  @UseGuards(AuthGuard("jwt"))
+  buyNowAndClearBasket(
+    @UserObj() user: User,
+  ): Promise<void> {
+    return this.basketService.buyNowAndClearBasket(user);
   }
 }
