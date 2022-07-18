@@ -41,12 +41,18 @@ export class BasketService {
     await ProductInBasket.delete(id);
   }
 
-  async listProductsInBasket(): Promise<ListProductsInBasketResponse> {
-    return await ProductInBasket.find();
+  async listProductsInOneUserBasket(user: User): Promise<ListProductsInBasketResponse> {
+    const relation = await User.find({
+      relations: ["itemsInBasket"],
+    });
+    console.log(relation);
+    const currentUser: User = relation.filter(currentUser => currentUser.id = user.id)[0];
+
+    return currentUser.itemsInBasket;
   }
 
-  async getTotalPriceOfBasket(): Promise<GetTotalPriceResponse> {
-    const sum =  (await this.listProductsInBasket())
+  async getTotalPriceOfBasket(user: User): Promise<GetTotalPriceResponse> {
+    const sum =  (await this.listProductsInOneUserBasket(user))
       .map(el => Number(el.price))
       .reduce((prev, curr) => prev + curr, 0)
       .toFixed(2);
