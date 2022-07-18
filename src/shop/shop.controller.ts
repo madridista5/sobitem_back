@@ -1,7 +1,10 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Inject, Param, Post, UseGuards } from "@nestjs/common";
 import { ShopService } from "./shop.service";
 import { GetListOfShopsResponse, GetOneShopResponse } from "../types";
 import { AddShopDto } from "./dto/add-shop.dto";
+import { UserObj } from "../decorators/userobj.decorator";
+import { User } from "../user/user.entity";
+import { AuthGuard } from "@nestjs/passport";
 
 @Controller('api/shop')
 export class ShopController {
@@ -30,8 +33,11 @@ export class ShopController {
   }
 
   @Post('/add')
-  addShop(@Body() req: AddShopDto): Promise<void> {
-    console.log(req);
-    return this.shopService.addShop(req);
+  @UseGuards(AuthGuard('jwt'))
+  addShop(
+    @Body() req: AddShopDto,
+    @UserObj() user: User,
+    ): Promise<void> {
+    return this.shopService.addShop(req, user);
   }
 }

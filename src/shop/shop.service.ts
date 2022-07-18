@@ -5,6 +5,7 @@ import { GetListOfShopsResponse, GetOneShopResponse } from "../types";
 import { DataSource } from "typeorm";
 import { ProductRecord } from "../product/productRecord.entity";
 import { AddShopDto } from "./dto/add-shop.dto";
+import { User } from "../user/user.entity";
 
 @Injectable()
 export class ShopService {
@@ -25,12 +26,13 @@ export class ShopService {
     await ShopRecord.delete(id);
   }
 
-  async addShop(req: AddShopDto): Promise<void> {
+  async addShop(req: AddShopDto, user: User): Promise<void> {
     const newShop = new ShopRecord();
     newShop.name = req.name;
     newShop.category = req.category;
     newShop.url = req.url;
     newShop.address = req.address;
+    newShop.user_id = user;
     newShop.lon = req.lon;
     newShop.lat = req.lat;
     await newShop.save();
