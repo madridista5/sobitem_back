@@ -12,7 +12,7 @@ export class BasketService {
   constructor(@Inject(forwardRef(() => ProductService)) private productService: ProductService) {
   }
 
-  async addProductToBasket(item: AddProductBasketDto): Promise<void> {
+  async addProductToBasket(item: AddProductBasketDto, user: User): Promise<void> {
     const {name, price, count, productId} = item;
 
     // uaktualnienie produktu - zmniejszenie count o 1
@@ -25,11 +25,8 @@ export class BasketService {
     newItem.price = price;
     newItem.count = 1;
     newItem.productId = productId;
+    newItem.user = user;
     await newItem.save();
-
-    //test - zapisywanie przedmiotu do konkretnego użtkownika
-    // newItem.user = user;
-    // await newItem.save();
   }
 
 

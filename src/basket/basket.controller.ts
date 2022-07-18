@@ -18,7 +18,7 @@ export class BasketController {
     @Body() item: AddProductBasketDto,
     @UserObj() user: User,
     ) {
-    return this.basketService.addProductToBasket(item);
+    return this.basketService.addProductToBasket(item, user);
   }
 
   @Delete('/:id')
