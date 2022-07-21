@@ -17,6 +17,14 @@ export class ShopController {
     return this.shopService.getShops();
   }
 
+  @Get('/allShopsLoggedUser')
+  @UseGuards(AuthGuard("jwt"))
+  listAllShopsLoggedUser (
+    @UserObj() user: User,
+  ): Promise<GetListOfShopsResponse> {
+    return this.shopService.getShopsLoggedUser(user);
+  }
+
   @Get('/allShops/:productName')
   listAllShopsWithTheProduct(@Param('productName') productName: string): Promise<GetListOfShopsResponse> {
     return this.shopService.getShopsWithTheProduct(productName);

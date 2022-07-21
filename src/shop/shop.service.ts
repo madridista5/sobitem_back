@@ -18,6 +18,13 @@ export class ShopService {
     return await ShopRecord.find();
   }
 
+  async getShopsLoggedUser(user: User): Promise<GetListOfShopsResponse> {
+    const relation = await ShopRecord.find({
+      relations: ['user_id'],
+    });
+    return relation.filter(shop => shop.user_id.id === user.id);
+  }
+
   async getOneShop(id: string): Promise<GetOneShopResponse> {
     return await ShopRecord.findOneOrFail({where: {id}});
   }
