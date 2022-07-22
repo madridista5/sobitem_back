@@ -14,7 +14,8 @@ export interface ProductEntity {
   shop_id: string;
 }
 
-export interface SimplyProductEntity extends Omit<ProductEntity, 'description' | 'shop_id'> {}
+export interface SimplyProductEntity extends Omit<ProductEntity, "description" | "shop_id"> {
+}
 
 export type GetListOfProductsResponse = ProductInterface[];
 export type GetOneProductResponse = ProductInterface;

@@ -6,7 +6,6 @@ import { ProductInBasket } from "./product-in-basket.entity";
 import { ProductRecord } from "../product/productRecord.entity";
 import { User } from "../user/user.entity";
 import { DataSource } from "typeorm";
-import { from } from "rxjs";
 
 @Injectable()
 export class BasketService {
@@ -18,9 +17,8 @@ export class BasketService {
   }
 
   async addProductToBasket(item: AddProductBasketDto, user: User): Promise<void> {
-    const {name, price, count, productId} = item;
+    const {name, price, productId} = item;
 
-    // uaktualnienie produktu - zmniejszenie count o 1
     const productToDecreaseCount = await ProductRecord.find({where: {id: productId}});
     productToDecreaseCount[0].count--;
     await productToDecreaseCount[0].save();
@@ -36,7 +34,6 @@ export class BasketService {
 
 
   async deleteItemFromBasket(id: string): Promise<void> {
-    // uaktualnienie produtku - zwiększenie count o 1
     const productToDeleteFromBasket = await ProductInBasket.find({where: { id }});
     const productId = productToDeleteFromBasket[0].productId;
     const productToIncreaseCount = await ProductRecord.find({where: {id: productId}});

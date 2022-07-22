@@ -1,15 +1,16 @@
 import { Controller, Post, Body, Inject } from "@nestjs/common";
-import { UserService } from './user.service';
+import { UserService } from "./user.service";
 import { RegisterDto } from "./dto/register.dto";
 import { RegisterUserResponse } from "../types";
 
-@Controller('api/user')
+@Controller("api/user")
 export class UserController {
   constructor(
-    @Inject(UserService) private userService: UserService,
-    ) {}
+    @Inject(UserService) private userService: UserService
+  ) {
+  }
 
-  @Post('/register')
+  @Post("/register")
   create(@Body() newUser: RegisterDto): Promise<RegisterUserResponse> {
     return this.userService.register(newUser);
   }

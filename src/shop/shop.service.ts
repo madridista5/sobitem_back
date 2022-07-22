@@ -11,8 +11,9 @@ import { User } from "../user/user.entity";
 export class ShopService {
   constructor(
     @Inject(forwardRef(() => ProductService)) private productService: ProductService,
-    @Inject(DataSource) private dataSource: DataSource,
-  ) {}
+    @Inject(DataSource) private dataSource: DataSource
+  ) {
+  }
 
   async getShops(): Promise<GetListOfShopsResponse> {
     return await ShopRecord.find();
@@ -20,13 +21,13 @@ export class ShopService {
 
   async getShopsLoggedUser(user: User): Promise<GetListOfShopsResponse> {
     const relation = await ShopRecord.find({
-      relations: ['user_id'],
+      relations: ["user_id"]
     });
     return relation.filter(shop => shop.user_id.id === user.id);
   }
 
   async getOneShop(id: string): Promise<GetOneShopResponse> {
-    return await ShopRecord.findOneOrFail({where: {id}});
+    return await ShopRecord.findOneOrFail({ where: { id } });
   }
 
   async removeShop(id: string): Promise<void> {
@@ -52,9 +53,9 @@ export class ShopService {
 
   async getShopsWithTheProduct(productName: string): Promise<GetListOfShopsResponse> {
     const relation = await ProductRecord.find({
-      relations: ['shop'],
+      relations: ["shop"]
     });
-    return  relation
+    return relation
       .filter(product => product.name === productName)
       .map(shop => shop.shop);
   }
@@ -72,7 +73,7 @@ export class ShopService {
       .createQueryBuilder()
       .update(ShopRecord)
       .set(shopToEdit)
-      .where({id: req.id})
+      .where({ id: req.id })
       .execute();
   }
 }

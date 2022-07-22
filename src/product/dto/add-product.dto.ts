@@ -3,6 +3,5 @@ export class AddProductDto {
   price: number;
   count: number;
   description?: string;
-  // shop: ShopRecord;
   shopId: string;
 }
