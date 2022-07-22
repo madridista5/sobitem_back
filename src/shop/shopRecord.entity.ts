@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from "typeorm";
 import { ShopInterface } from "../types";
 import { ProductRecord } from "../product/productRecord.entity";
 import { User } from "../user/user.entity";
@@ -45,7 +52,6 @@ export class ShopRecord extends BaseEntity implements ShopInterface {
   })
   lon: number;
 
-  @OneToOne(type => User)
-  @JoinColumn()
+  @ManyToOne(type => User, entity => entity.shopRecord)
   user_id: User;
 }
