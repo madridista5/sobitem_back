@@ -6,7 +6,6 @@ import { hashPwd } from "../utils/hash-pwd";
 import { v4 as uuid } from "uuid";
 import { sign } from "jsonwebtoken";
 import { JwtPayload } from "./jwt.strategy";
-import { config } from "../config/config";
 
 @Injectable()
 export class AuthService {
@@ -14,7 +13,7 @@ export class AuthService {
   private createToken(currentTokenId: string): { accessToken: string, expiresIn: number } {
     const payload: JwtPayload = { id: currentTokenId };
     const expiresIn = 60 * 60 * 24;
-    const accessToken = sign(payload, config.SECRET_OR_KEY, { expiresIn });
+    const accessToken = sign(payload, process.env.SECRET_OR_KEY, { expiresIn });
     return {
       accessToken,
       expiresIn

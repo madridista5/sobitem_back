@@ -1,15 +1,15 @@
-import { BaseEntity, Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ShopRecord } from "../shop/shopRecord.entity";
 import { ProductInBasket } from "../basket/product-in-basket.entity";
 
 @Entity()
 export class User extends BaseEntity {
 
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({
-    length: 255,
+    length: 255
   })
   email: string;
 
@@ -18,7 +18,7 @@ export class User extends BaseEntity {
 
   @Column({
     nullable: true,
-    default: null,
+    default: null
   })
   currentTokenId: string | null;
 

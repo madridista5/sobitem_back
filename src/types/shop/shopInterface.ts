@@ -6,7 +6,6 @@ export interface ShopInterface {
   address: string;
   lat: number;
   lon: number;
-  // user_id: User | null;
 }
 
 export interface SimpleShopEntity {
@@ -15,7 +14,7 @@ export interface SimpleShopEntity {
   lon: number,
 }
 
-export interface ShopEntity extends SimpleShopEntity{
+export interface ShopEntity extends SimpleShopEntity {
   name: string;
   category: string;
   url: string;

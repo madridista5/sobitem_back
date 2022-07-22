@@ -1,8 +1,7 @@
-import * as crypto from 'crypto';
-import { config } from "../config/config";
+import * as crypto from "crypto";
 
 export const hashPwd = (p: string): string => {
-  const hmac = crypto.createHmac('sha512', config.SALT);
+  const hmac = crypto.createHmac("sha512", process.env.SALT);
   hmac.update(p);
-  return hmac.digest('hex');
-}
+  return hmac.digest("hex");
+};

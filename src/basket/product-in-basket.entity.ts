@@ -29,7 +29,6 @@ export class ProductInBasket extends BaseEntity implements AddProductBasketDto {
   })
   productId: string;
 
-  // 16
   @ManyToOne(type => User, entity => entity.itemsInBasket)
   @JoinColumn()
   user: User;
