@@ -30,6 +30,10 @@ export class ShopService {
   }
 
   async removeShop(id: string): Promise<void> {
+    const productsInTheShop = await this.productService.listAllProductsFromSingleShop(id);
+    for (const product of productsInTheShop) {
+      await this.productService.removeProduct(product.id);
+    }
     await ShopRecord.delete(id);
   }
 
