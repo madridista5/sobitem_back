@@ -58,4 +58,21 @@ export class ShopService {
       .filter(product => product.name === productName)
       .map(shop => shop.shop);
   }
+
+  async editShop(req: AddShopDto): Promise<void> {
+    const shopToEdit = await new ShopRecord();
+    shopToEdit.name = req.name;
+    shopToEdit.category = req.category;
+    shopToEdit.url = req.url;
+    shopToEdit.address = req.address;
+    shopToEdit.lon = req.lon;
+    shopToEdit.lat = req.lat;
+
+    await this.dataSource
+      .createQueryBuilder()
+      .update(ShopRecord)
+      .set(shopToEdit)
+      .where({id: req.id})
+      .execute();
+  }
 }

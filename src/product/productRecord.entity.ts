@@ -31,7 +31,9 @@ export class ProductRecord extends BaseEntity implements ProductInterface {
   })
   description: string | null;
 
-  @ManyToOne(type => ShopRecord, entity => entity.id)
+  @ManyToOne(type => ShopRecord, entity => entity.id, {
+    onUpdate: "CASCADE",
+  })
   @JoinColumn()
   shop: ShopRecord;
 }

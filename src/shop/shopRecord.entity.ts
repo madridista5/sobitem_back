@@ -52,6 +52,8 @@ export class ShopRecord extends BaseEntity implements ShopInterface {
   })
   lon: number;
 
-  @ManyToOne(type => User, entity => entity.shopRecord)
+  @ManyToOne(type => User, entity => entity.shopRecord, {
+    onUpdate: "CASCADE",
+  })
   user_id: User;
 }
