@@ -22,8 +22,8 @@ export class User extends BaseEntity {
   })
   currentTokenId: string | null;
 
-  @OneToOne(type => ShopRecord)
-  shopRecord: ShopRecord;
+  @OneToMany(type => ShopRecord, entity => entity.user_id)
+  shopRecord: ShopRecord[];
 
   @OneToMany(type => ProductInBasket, entity => entity.user)
   itemsInBasket: ProductInBasket[];
