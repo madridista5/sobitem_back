@@ -10,12 +10,12 @@ import { MoreThan } from "typeorm";
 export class ProductService {
   constructor(
     @Inject(
-      forwardRef(() => ShopService)) private shopService: ShopService,
-    ) {
+      forwardRef(() => ShopService)) private shopService: ShopService
+  ) {
   }
 
   async getProducts(): Promise<GetListOfProductsResponse> {
-    return await ProductRecord.find({where: {count: MoreThan(0)}});
+    return await ProductRecord.find({ where: { count: MoreThan(0) } });
   }
 
   async getOneProduct(id: string): Promise<GetOneProductResponse> {
@@ -27,8 +27,8 @@ export class ProductService {
   }
 
   async addProduct(req: AddProductDto, shopId: string): Promise<void> {
-    const {name, price, count, description} = req;
-    const newShop = await ShopRecord.find({where: {id: shopId}});
+    const { name, price, count, description } = req;
+    const newShop = await ShopRecord.find({ where: { id: shopId } });
     const newProduct = new ProductRecord();
     newProduct.name = name;
     newProduct.price = price;
@@ -48,10 +48,4 @@ export class ProductService {
     });
     return relation.filter(product => product.name === productName);
   }
-
-  // methods for basket (38:54 d 15)
-  async hadProduct(id: string): Promise<boolean> {
-    return (await this.getProducts()).some(product => product.id === id);
-  }
-
 }

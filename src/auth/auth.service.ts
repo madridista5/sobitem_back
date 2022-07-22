@@ -51,8 +51,7 @@ export class AuthService {
           domain: 'localhost',
           httpOnly: true,
         })
-        // .json({ ok: true });
-        .json({ userId: user.id });
+        .json({ ok: true });
     } catch (e) {
       return res.json({ error: e.message });
     }

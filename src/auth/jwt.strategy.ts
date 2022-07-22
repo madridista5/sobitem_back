@@ -16,7 +16,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
     super({
       jwtFromRequest: cookieExtractor,
-      secretOrKey: process.env.SECRET_OR_KEY, // to musi być to samo co w metodzie createToken w pliku auth.service.ts
+      secretOrKey: process.env.SECRET_OR_KEY,
     });
   }
 
