@@ -1,6 +1,17 @@
-Wrzuciłem aplikacje tutaj:
+<h1>Aplikacja działa pod adresem:</h1>
+<br>
 https://sobitem.tlossy.networkmanager.pl/
-Można zobaczyć tam front, ale niestety z jakiegoś powodu nie działają ścieżki wymagające przesłania JWT z frontu na backend.
+<br>
+<br>
+Możesz utworzyć konto dla własnego adresu email, a następnie zalogować się i przetestować jej działanie 🙂
+<br>
+<br>
+Jeżeli nie chcesz tworzyć wlasnego konta to skorzystaj z testowego:
+<br>
+email: test@gmail.com
+<br>
+hasło: test
+<hr>
 
 
 
