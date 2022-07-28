@@ -1,91 +1,197 @@
-<h1>Aplikacja działa pod adresem:</h1>
-<br>
+<h1>The application works at:</h1>
 https://sobitem.tlossy.networkmanager.pl/
 <br>
+You can create your own account using your email adress, log in and test how it works 🙂
 <br>
-Możesz utworzyć konto dla własnego adresu email, a następnie zalogować się i przetestować jej działanie 🙂
 <br>
-<br>
-Jeżeli nie chcesz tworzyć wlasnego konta to skorzystaj z testowego:
+If you don't want to create an account you can use the test account:
 <br>
 email: test@gmail.com
 <br>
-hasło: test
-<hr>
+password: test
 
 
+<div align="center">
+
+  <a href="https://sobitem.tlossy.networkmanager.pl" target="_blank"><img src="https://raw.githubusercontent.com/madridista5/madridista5/main/1_0_GIF_0.GIF" alt="logo" width="400" height="auto" /></a>
+  <h1>SoB item</h1>
+ 
+<h4>
+    
+  </h4>
+</div>
+
+<br />
 
 
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+- [About the Project](#star2-about-the-project)
+  * [How the application works](#camera-How-the-application-works)
+  * [Tech Stack](#space_invader-tech-stack)
+  * [Environment Variables](#key-environment-variables)
+- [Getting Started](#toolbox-getting-started)
+  * [Prerequisites](#bangbang-prerequisites)
+  * [Run Locally](#running-run-locally)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<!-- About the Project -->
+## :star2: About the Project
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<!-- Screenshots -->
+### :camera: How the application works
 
-## Installation
+<p>1. First of all you have to open the appliaction:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/1.png" alt="screenshot" />
+</div>
+
+<br>
+<p>2. You have to create your account:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/2.png" alt="screenshot" />
+</div>
+
+<br>
+<p>3. You have to log in:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/3.png" alt="screenshot" />
+</div>
+
+<br>
+<p>4. Now you can open the menu:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/4.png" alt="screenshot" />
+</div>
+
+<br>
+<p>5. The menu is on the left:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/5.png" alt="screenshot" />
+</div>
+
+<br>
+<p>6. You can see a list of the shops:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/6.png" alt="screenshot" />
+</div>
+
+<br>
+<p>7. You can see a list of the products. You can add each product to your basket using the "Dodaj do koszyka" button:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/7.png" alt="screenshot" />
+</div>
+
+<br>
+<p>8. You can see each shop on the map. If you write the name of the product you are looking for in the "search bar" you will see only a list of shops where the product is:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/8.png" alt="screenshot" />
+</div>
+
+<br>
+<p>9. You can see your basket. You can delete product from basket if you do not want to buy it or click "kup teraz" button and buy all the products in your basket:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/9.png" alt="screenshot" />
+</div>
+
+<br>
+<p>10. You can add your shop:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/10.png" alt="screenshot" />
+</div>
+
+<br>
+<p>11. You can see all your shops:</p>
+<p>Here you can also:</p>
+<p> - see all products in your shop </p>
+<p> - add product to your shop </p>
+<p> - edit your shop </p>
+<p> - delete your shop </p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/11.png" alt="screenshot" />
+</div>
+
+
+<!-- TechStack -->
+### :space_invader: Tech Stack
+
+<details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+    <li><a href="https://nestjs.com/">Nest.js</a></li>  
+    <li><a href="https://nodejs.org/en/">Node.js</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Database</summary>
+  <ul>
+    <li><a href="https://typeorm.io">TypeORM</a></li>  
+  </ul>
+</details>
+
+
+<!-- Env Variables -->
+### :key: Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`DB_HOST`
+
+`DB_PORT`
+
+`DB_USERNAME`
+
+`DB_PASSWORD`
+
+`DB_DATABASE`
+
+`SALT`
+
+`SECRET_OR_KEY`
+
+`CORS_ORIGIN`
+
+<!-- Getting Started -->
+## 	:toolbox: Getting Started
+
+<!-- Prerequisites -->
+### :bangbang: Prerequisites
+
+This project uses npm as package manager
+
+
+<!-- Run Locally -->
+### :running: Run Locally
+
+Clone the project
 
 ```bash
-$ npm install
+  git clone https://github.com/madridista5/sobitem_back.git
 ```
 
-## Running the app
+Go to the project directory
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+  cd sobitem_back
 ```
 
-## Test
+Install dependencies
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+  npm install
 ```
 
-## Support
+Start the application
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+```bash
+  nest start --watch
+```
