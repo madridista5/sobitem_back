@@ -138,6 +138,13 @@ password: test
   </ul>
 </details>
 
+<br>
+<p>Database structure:</p>
+<div align="center"> 
+  <img src="https://github.com/madridista5/sobitem_front/blob/main/db_sobitem.png" alt="screenshot" />
+</div>
+
+
 
 <!-- Env Variables -->
 ### :key: Environment Variables
